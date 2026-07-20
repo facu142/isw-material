@@ -38,11 +38,15 @@ Son un instrumento para el **Aseguramiento de la Calidad en el Software**.
 ### 3. Auditorías de Proyecto
 
 - **Valida el cumplimiento del proceso de desarrollo**. Verifica que el proyecto se ha ejecutado con el proceso que se dijo que se iba a ejecutar.
-- ¿Dónde está definido qué proceso voy a usar? → En el **plan del proyecto**.
+- ¿Dónde está definido qué proceso voy a usar? → En el **plan del proyecto** (o en una **wiki / metodología ágil** si el equipo trabaja con Scrum, Kanban, etc.).
 - Se llevan a cabo de acuerdo al **PACS** (Plan de Aseguramiento de Calidad de Software).
 - El PACS debería indicar quién es el responsable de realizarlas.
 - Las inspecciones de software y las revisiones de la documentación de diseño y prueba deberían incluirse en esta auditoría.
 - El objetivo es **verificar objetivamente la consistencia del producto** a medida que evoluciona a lo largo del proceso de desarrollo.
+
+> **Punto clave**: si el equipo documentó que va a hacer *Daily Meetings* y Retrospectivas, la auditoría de proyecto verifica que efectivamente las hagan. No audita contra un proceso "tradicional" rígido, sino contra **el proceso que el propio equipo se comprometió a seguir**.
+
+> Esta auditoría es la que **une verificación y validación**: verifica que se hizo lo planeado (proceso) y valida que el producto sea el correcto.
 
 #### Ejemplo: proyecto con metodología tradicional (waterfall o modelo en V)
 
@@ -55,6 +59,14 @@ Se audita la **documentación**:
 - Requerimientos → ERS.
 - Diseño → SDD (Software Design Document).
 - ¿Cada requisito de la ERS tiene **trazabilidad** hacia el diseño, código y pruebas?
+
+#### Ejemplo: proyecto con metodología ágil (Scrum)
+
+Se audita el cumplimiento de las **prácticas ágiles** comprometidas:
+- ¿Se hacen las *Dailies* todos los días?
+- ¿Hay *Sprint Review* y *Retrospectiva* al final de cada sprint?
+- ¿El *Product Backlog* está actualizado y priorizado?
+- ¿El equipo tiene un *Definition of Done*?
 
 ---
 
@@ -87,8 +99,12 @@ Se audita la **documentación**:
 
 ## Proceso de Auditoría
 
-1. **Planificación y Preparación**: el auditado solicita la auditoría, se coordina fecha, participantes y se proporciona documentación preliminar.
-2. **Ejecución**: el auditor hace preguntas, el auditado responde, el auditor solicita evidencia. Se completa un **checklist** en paralelo.
+> **Importante**: las auditorías **no son sorpresas**. Se planifican de forma conjunta entre el auditor y el auditado, y el **líder de proyecto** suele ser quien las convoca.
+
+1. **Planificación y Preparación**: el auditado solicita la auditoría (generalmente el líder de proyecto), se coordina fecha, participantes y se proporciona documentación preliminar.
+2. **Ejecución**: el auditor hace preguntas, el auditado responde, el auditor solicita evidencia. Se completa un **checklist** en paralelo. El auditor recolecta dos tipos de evidencia:
+   - **Evidencia objetiva**: documentación, registros, artefactos (lo que está escrito).
+   - **Evidencia subjetiva**: entrevistas a los miembros del equipo sobre qué hacen y cómo lo hacen (la práctica real).
 3. **Generación de Reporte**: se analizan resultados y se genera un **reporte preliminar** (después se entrega el final en una fecha determinada).
 4. **Seguimiento**: se analizan las desviaciones y el auditor genera un **plan de acción** para corregirlas.
 
@@ -144,6 +160,20 @@ Software que facilita la auditoría (análisis estático, métricas, etc.).
 | **Desviaciones** | Requieren **plan de acción** por parte del auditado. | Cualquier disconformidad del producto respecto de sus requerimientos, falta de control para satisfacerlos, o desviación al proceso definido que cause incertidumbre sobre la calidad. |
 | **Observaciones** | Condiciones que **deberían mejorarse** pero **no requieren plan de acción**. | Opinión sobre condición incumplida, práctica a mejorar, condición que puede devenir en desviación futura. |
 
+#### Ejemplo: los tres dados (para entender Observaciones)
+
+> La profesora usó este ejemplo en clase: si un equipo documentó que para estimar "**tiran tres dados**" y el auditor verifica que efectivamente lo hacen, **no es una desviación** (porque cumplen su propio proceso documentado), pero **sí es una observación** de riesgo porque la técnica es poco seria o inefectiva.
+
+La clave es:
+
+- **No es lo que el auditor haría**, sino **lo que el equipo se comprometió a hacer**.
+- Si cumplen lo que documentaron, no hay desviación.
+- Pero el auditor puede marcarlo como **observación** si considera que la práctica puede devenir en problema.
+
+#### Consejo para el reporte
+
+> **Siempre empezar el informe por las buenas noticias** (buenas prácticas) para preparar al equipo anímicamente antes de tratar las desviaciones. Esto baja la defensividad y abre el diálogo.
+
 ### Ejemplos de preguntas para auditoría de planificación
 
 ![Ejemplos de preguntas - Planificación de Proyectos](imgs/p238_img1.png)
@@ -179,15 +209,19 @@ El auditor debe asegurarse de que:
 
 | Aspecto | Revisión técnica (peer review) | Auditoría |
 |---|---|---|
-| Quién | Colegas del equipo | Personas **externas** al equipo |
-| Objetividad | Alta | **Máxima** (la independencia es el valor central) |
-| Frecuencia | Continua (diaria, por iteración) | Programada (periódica) |
-| Proceso | Formal o informal | Siempre formal |
-| Artefactos | Cualquier artefacto | Productos, procesos, documentación |
-| Métricas | Recomendadas (en formales) | Siempre |
-| Cultura | "No se juzga al autor" | Independiente y objetiva |
+| **Foco** | Detectar **errores** (en artefactos) | Verificar **cumplimiento** (proceso/estándares) |
+| **Independencia** | Baja (entre colegas) | **Alta** (debe ser alguien externo al proyecto) |
+| **Quién** | Colegas del equipo | Personas **externas** al equipo |
+| **Objetividad** | Alta | **Máxima** (la independencia es el valor central) |
+| **Frecuencia** | Continua (diaria, por iteración) | Programada (periódica, **no es sorpresa**) |
+| **Proceso** | Formal o informal | Siempre formal |
+| **Rol del líder** | Participante activo / revisor | **Auditado** (principal responsable) |
+| **Artefactos** | Cualquier artefacto | Productos, procesos, documentación |
+| **Resultado** | Lista de hallazgos para corregir | Reporte formal con **no-conformidades** |
+| **Métricas** | Recomendadas (en formales) | Siempre |
+| **Cultura** | "No se juzga al autor" | Independiente y objetiva |
 
-> En ágil se prefieren las **revisiones técnicas** para evitar traer auditores externos, que pueden chocar con la autoorganización del equipo.
+> En ágil se prefieren las **revisiones técnicas** para evitar traer auditores externos, que pueden chocar con la autoorganización del equipo. Pero si el equipo ágil decide auditarse, el auditor debe tener la **flexibilidad** de evaluar el cumplimiento de las prácticas ágiles (Dailies, Retrospectivas) y no forzar una burocracia tradicional innecesaria.
 
 ---
 
@@ -197,11 +231,17 @@ El auditor debe asegurarse de que:
 2. **Tres tipos**:
    - **PCA** (física): compara producto con documentación.
    - **FCA** (funcional): compara producto con requerimientos (matriz de rastreabilidad).
-   - **De proyecto**: verifica cumplimiento del proceso definido en el plan.
-3. **Roles**: gerente de SQA (planifica), auditor (evalúa), auditado (generalmente el líder del proyecto, proporciona evidencia).
-4. **Proceso**: Planificación → Ejecución → Reporte → Seguimiento.
-5. **Resultados**: buenas prácticas (elogio), **desviaciones** (requieren plan de acción), observaciones (sugerencia, sin plan).
-6. **Diferencia con peer review**: la auditoría es **externa e independiente**; la revisión es entre colegas. Ágil prefiere la segunda.
-7. **Cerrá con la idea**: la auditoría es el instrumento de **máxima objetividad** porque la realiza alguien sin compromiso con el proyecto.
+   - **De proyecto**: verifica cumplimiento del proceso definido en el plan (o en la metodología ágil del equipo).
+3. **No son sorpresa**: las convoca el **líder de proyecto** y se planifican en conjunto con el auditor.
+4. **Evidencia**: el auditor junta dos tipos: **objetiva** (docs, registros) y **subjetiva** (entrevistas al equipo sobre la práctica real).
+5. **Roles**: gerente de SQA (planifica), auditor (evalúa), auditado (generalmente el líder del proyecto, proporciona evidencia).
+6. **Proceso**: Planificación → Ejecución → Reporte → Seguimiento.
+7. **Resultados**: buenas prácticas (elogio, van primero en el reporte), **desviaciones** (requieren plan de acción), observaciones (sugerencia, sin plan).
+8. **Ejemplo de los tres dados**: si el equipo documentó que estima "tirando tres dados" y lo hace, **no es desviación** (cumplen su proceso), pero **sí es observación** (la técnica es riesgosa).
+9. **Diferencia con peer review**: la auditoría es **externa e independiente**; la revisión es entre colegas. Ágil prefiere la segunda.
+10. **Auditor en ágil**: debe ser **flexible** y evaluar el cumplimiento de las prácticas ágiles (Dailies, Retros), no forzar una burocracia tradicional.
+11. **Cerrá con la idea**: la auditoría es el instrumento de **máxima objetividad** porque la realiza alguien sin compromiso con el proyecto. Es la que **une verificación y validación**.
 
 > **Si te preguntan "¿qué es una no-conformidad?"** → una **desviación** que resulta en disconformidad del producto respecto de sus requerimientos, o falta de control para satisfacerlos. Requiere plan de acción.
+
+> **Si te preguntan "¿la auditoría de proyecto qué une?"** → une **verificación** (¿se hizo lo que se planeó?) con **validación** (¿es el producto correcto?). Por eso es clave: garantiza que el proceso y el producto van de la mano.

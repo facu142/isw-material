@@ -1,196 +1,183 @@
 # 10 — Modelos de Mejora y Evaluación de Procesos
 
-> Págs. 212-225 del apunte. Cubre SPICE / ISO 15504, IDEAL, y CMMI con sus niveles, constelaciones y áreas de proceso.
+> Págs. 212-225 del apunte. Cubre SPICE (ISO 15504), IDEAL y CMMI (niveles, constelaciones y áreas de proceso), incluyendo su relación con metodologías ágiles y el proceso de auditoría.
 
-## Modelos de Mejora de Procesos
+## 1. Introducción a la Mejora de Procesos
 
-> La **mejora continua de procesos** significa comprender los procesos existentes y cambiarlos para **incrementar la calidad del producto** o **reducir costos y tiempo** de desarrollo. Los procesos definidos están de acuerdo con esta definición.
+> La **mejora continua de procesos** consiste en comprender cómo trabaja la organización actualmente y modificar esos procesos para **incrementar la calidad del producto**, o bien **reducir costos y tiempos** de desarrollo. 
 
-- Los modelos **NO te dicen cómo hacer las cosas**. Son modelos **descriptivos**.
-- El propósito es **analizar el proceso que tiene la organización** y armar un **proyecto cuyo resultado, en lugar de ser un producto, es un proceso (definido) mejorado** que se vuelca de nuevo a la organización.
-- Todos parten de la filosofía: **si tengo un proceso mejorado, el producto es de calidad**.
+- Estos modelos **NO te dicen cómo programar ni cómo hacer tu trabajo** (no son metodologías). Son marcos de referencia **descriptivos**.
+- Su objetivo es tratar a la mejora como un proyecto en sí mismo: **un proyecto cuyo resultado no es un software, sino un proceso definido y mejorado** que se devuelve a la organización para que todos lo utilicen.
+- La filosofía base es simple: **si el proceso es maduro y de calidad, el producto resultante también lo será**.
 
-### Procesos con calidad
+### La Diferencia Clave: ¿IDEAL o CMMI?
+Es muy común confundir para qué sirve cada uno. La regla es simple:
+* **IDEAL es el Modelo de Mejora:** Te dice *cómo* llevar adelante un proyecto de mejora (los pasos a seguir).
+* **CMMI es el Modelo de Calidad:** Te dice *qué* objetivos debes alcanzar con ese proceso.
 
+### El Ciclo de Calidad en los Procesos
 ![Procesos con calidad: Definir -> Desarrollar -> Evaluar -> Estandarizar](imgs/p213_img1.png)
 
-> El proceso se define, se desarrolla el producto, se evalúa la calidad. Si la calidad es OK, se **estandariza** y se distribuye. Si no, se **mejora** el proceso y se vuelve a intentar.
+1. El proceso se **define**.
+2. Se **desarrolla** el producto usando ese proceso.
+3. Se **evalúa** la calidad resultante.
+4. Si la calidad es buena, el proceso se **estandariza** y se distribuye. Si no, se ajusta y se vuelve a iterar.
 
-Una vez estandarizado, se distribuye a la organización para que todos los equipos lo usen. **Acá es donde difiere ágil con los empíricos**, que dicen que la experiencia no es extrapolable.
+> **Choque de filosofías:** Al estandarizar un proceso, la organización asume que la experiencia exitosa de un equipo sirve para los demás. **El agilismo (basado en el control empírico) difiere aquí**, argumentando que cada equipo y proyecto es un ecosistema único y la experiencia rígidamente estandarizada no siempre es extrapolable.
 
 ---
 
-## Modelo IDEAL
+## 2. ⚠️ Aclaración clave: ¿Certificar o Evaluar/Acreditar?
+
+Para el examen oral, es vital que no uses estos verbos como sinónimos:
+
+* **Certificar (Ej. ISO 9001):** Un ente externo (auditor) revisa tu empresa y dictamina si cumplís o no con una norma estándar. Es un resultado binario: **Aprobás o no aprobás**.
+* **Evaluar / Acreditar / *Appraisal* (Ej. CMMI, SPICE):** No hay un "aprobado/reprobado". Un evaluador analiza tus procesos y **determina en qué nivel estás**. No te dan un "certificado", sino que te **acreditan un nivel de madurez o capacidad**.
+
+---
+
+## 3. Comparativa de los Modelos Principales
+
+| Modelo | Propósito Principal | Enfoque Estructural | ¿Certifica o Evalúa? | ¿Cómo se relacionan? |
+|---|---|---|---|---|
+| **IDEAL** | Guía de implementación. | Fases de un proyecto de mejora cíclica. | **Ninguno.** Es un método de trabajo para aplicar mejoras. | Es el "vehículo" o la hoja de ruta que usa la empresa para mejorar. |
+| **SPICE (ISO 15504)** | Evaluación de capacidad. | 2 Dimensiones (Procesos y Capacidad). | **Evalúa** (determina capacidad del 0 al 5). | Se utiliza dentro de la fase "D" (Diagnóstico) del modelo IDEAL. |
+| **CMMI** | Evaluación de madurez organizacional o capacidad de procesos. | Áreas de proceso distribuidas en niveles (1 al 5). | **Acredita / Evalúa** (mediante el método SCAMPI). | Es el estándar de madurez más robusto y utilizado en la industria del software. |
+
+---
+
+## 4. Modelo IDEAL
 
 ![Modelo IDEAL en fases](imgs/p214_img1.png)
 
-> Da el contexto para crear un **proyecto cuyo resultado va a ser un proceso definido**. Es un modelo **cíclico** que mejora el proceso existente en una organización. Su nombre se debe a las **5 fases** que lo componen.
+> IDEAL es un marco de trabajo cíclico para gestionar programas de mejora de procesos. Se llama así por las siglas de sus **5 fases**. *(Nota: Muy tomado en la cátedra).*
 
-> Es uno de los modelos en los que más se hace **incapié en cátedra**.
-
-### Fases
-
-| Fase | Qué hace | Notas |
+| Fase | Descripción | Punto Crítico |
 |---|---|---|
-| **I — Inicialización** | Se reconocen las necesidades de cambio, las razones para iniciar, las metas buscadas. | Clave: **sponsoreo o aval de la alta gerencia**. Sin esto, siempre hay "algo más importante" antes. |
-| **D — Diagnóstico** | Establecer la **madurez actual** de la organización y los riesgos asociados al proceso de mejora. | Acá entra el modelo **SPICE**, que ayuda a determinar el nivel de madurez. Se usan **auditorías y métricas**. |
-| **E — Establecimiento** | Se elabora un **plan de acción detallado** con acciones específicas, entregables y responsabilidades. Se definen **prioridades y estrategias**. | |
-| **A — Acción** | Efectuar los cambios y reunir información para aprender. Se implementa en un **proyecto piloto** (no en toda la organización). Si la solución es satisfactoria, se implanta en la empresa. | |
-| **L — Aprendizaje (Leveraging)** | Garantizar que el próximo ciclo sea más efectivo. Se revisa toda la información recolectada y se evalúan logros y objetivos. Se **extrapola la mejora** al resto de proyectos en caso de éxito, o se hacen **correcciones** si el piloto fracasó. | |
+| **I — Inicialización** | Se reconocen las necesidades de cambio y se definen las metas. | Requiere el **patrocinio (sponsorship) de la alta gerencia**. Sin apoyo directivo la mejora muere, porque los proyectos de clientes siempre parecen "más urgentes" y la gente no le dedica tiempo. |
+| **D — Diagnóstico** | Determina dónde está parada la organización hoy (*gap analysis*). | Aquí es donde se aplican modelos de evaluación como **SPICE** o **CMMI** para ver qué nos falta. |
+| **E — Establecimiento** | Se elabora el **plan de acción detallado** (entregables, métricas, responsables). | Se priorizan las áreas más críticas para el negocio. |
+| **A — Acción** | Se ejecuta el plan. Generalmente se implementa en un **proyecto piloto** controlado. | Permite ajustar la solución antes del despliegue masivo. |
+| **L — Aprendizaje (*Leveraging*)** | Se analiza el resultado del piloto. Si funcionó, se **estandariza y extrapola**. Si falló, se documentan las lecciones aprendidas. | Garantiza la mejora continua. |
 
 ---
 
-## Modelo SPICE (ISO 15504)
+## 5. Modelo SPICE (ISO/IEC 15504)
 
-> Modelo para la **mejora y evaluación de los procesos de desarrollo, mantenimiento de sistemas de información y productos de software**.
+> Es un estándar internacional para la **evaluación de la capacidad de los procesos**. Se estructura como una matriz de **dos dimensiones cruzadas**:
 
-Tiene una arquitectura basada en **dos dimensiones**: la de **procesos** y la de **capacidad**.
-
-### Dimensión de procesos
-
-Categorías de procesos:
-
-| Categoría | Procesos | Código |
-|---|---|---|
-| **Primarios** | Cliente | ACQ |
-| | Proveedor | SPL |
-| | Ingeniería | ENG |
-| | Operación | OPE |
-| **De soporte** | Soporte | SUP |
-| **De organización** | Gestión | MAN |
-| | Recursos humanos | REU |
-| | Infraestructura | RIN |
-| | Mejora de procesos | PIM |
-
-### Dimensión de capacidad
-
-Evalúa la capacidad de los procesos en **6 niveles**:
-
-| Nivel | Nombre |
-|---|---|
-| 0 | Incompleto |
-| 1 | Realizado |
-| 2 | Gestionado |
-| 3 | Establecido |
-| 4 | Predictable |
-| 5 | En optimización |
-
-Para cada nivel existen **atributos de proceso estándar** que ayudan a evaluar.
+1. **Dimensión de Procesos (El "Qué"):** Agrupa los procesos que la organización debe ejecutar (Primarios, De soporte, De organización).
+2. **Dimensión de Capacidad (El "Cómo de bien"):** Evalúa la ejecución de un proceso particular en **6 niveles**:
+   - 0: Incompleto / 1: Realizado / 2: Gestionado / 3: Establecido / 4: Predecible / 5: En optimización.
 
 ---
 
-## CMMI — Capability Maturity Model Integration
+## 6. CMMI (Capability Maturity Model Integration)
 
-> **Modelo Integrado de Capacidad y Madurez** para la **mejora y evaluación de procesos** de una organización.
+> No te dice cómo programar, sino **qué áreas de proceso (PA)** debes dominar para que tu desarrollo sea predecible. 
 
-- Desarrollado por el **Software Engineering Institute (SEI)**.
-- Es un **marco de referencia** descriptivo: **no te dice cómo hacer las cosas**, sino qué deberías lograr.
-- CMMI **no certifica empresas** como la ISO 9001. **Evalúa la madurez de los procesos** mediante una *Appraisal* (evaluación formal) y la organización obtiene un **nivel de madurez del 1 al 5**.
+**¿Qué significa "Grupo" en CMMI?**
+Cuando el modelo exige que exista un "Grupo de SQA" o "Grupo de SCM", no pide un departamento de 15 personas. Se refiere a que exista **el rol y la responsabilidad formalmente asignada**, aunque sea una sola persona a tiempo parcial.
 
-### SCAMPI
+### SCAMPI y los Tipos de Evidencia
+SCAMPI es el método oficial para evaluar/acreditar CMMI. Para que el evaluador dicte un nivel, necesita cruzar **dos tipos de evidencias**:
+1. **Evidencia Subjetiva:** Las entrevistas (lo que la gente *dice* que hace).
+2. **Evidencia Objetiva:** Documentos y repositorios (la *prueba* de que lo hicieron). *Ej: Si el líder dice en la entrevista que hace planes de calidad, el auditor pedirá ver el PDF en el repositorio.*
 
-> *Standard CMMI Appraisal Method for Process Improvement*: método oficial para evaluar según CMMI. Determina el nivel de madurez o capacidad de la organización.
-
-- Propone **3 tipos de evaluación (A, B, C)** que van de muy rigurosas a menos rigurosas.
-
-### Constelaciones
-
-> Existen 3 constelaciones o modelos de negocio. Cubren los modelos de CMMI. **El más usado en la cátedra es el DEV**.
-
-| Constelación | Qué hace | Ejemplo |
-|---|---|---|
-| **CMMI-DEV (Desarrollo)** | Mide, monitorea y administra procesos de desarrollo. Tiene dos representaciones: por **etapas** y **continua**. | Desarrollo de software interno. |
-| **CMMI-ACQ (Adquisición)** | Permite seleccionar, administrar y adquirir productos y servicios de otra empresa. | Cuando la empresa contrata gente que haga el trabajo (no es subcontratación de personal). |
-| **CMMI-SVC (Servicios)** | Guía para entregar servicios externos o internos. | Una compañía telefónica certifica su proceso de atención al cliente. |
+### Las 3 Constelaciones de CMMI
+1. **CMMI-DEV (Desarrollo):** Para empresas que construyen productos de software. *(Foco de la materia).*
+2. **CMMI-ACQ (Adquisición):** Para empresas que tercerizan y compran software.
+3. **CMMI-SVC (Servicios):** Para empresas que entregan servicios (soporte, salud, educación).
 
 ---
 
-## CMMI-DEV: Representación por Etapas
+## 7. CMMI-DEV: Las Dos Representaciones
 
-![CMMI-DEV por etapas - Niveles 1 a 5](imgs/p219_img1.png)
-
-CMM (el antecesor) se basaba mucho en etapas: dividía a las organizaciones en **maduras** (niveles 2-5) e **inmaduras** (nivel 1). A mayor madurez, mayor capacidad de lograr objetivos y menor riesgo.
-
-> **Importante**: para ser de un nivel, se debe cumplir con los requisitos de **ese nivel y los anteriores**. **Nosotros hacemos foco en el nivel 2**.
-
-| Nivel | Nombre | Descripción |
-|---|---|---|
-| 1 | **Inicial** | Procesos **ad hoc** y caóticos. No hay prácticas consistentes ni estructura. El éxito depende de "héroes". No se usan métricas. |
-| 2 | **Administrado (gestionado)** | Procesos caracterizados por proyectos, gestionables de forma básica. Foco en requerimientos, planificación y seguimiento. Empiezan a usarse métricas básicas. Sigue siendo **reactivo**. |
-| 3 | **Definido** | Procesos **estandarizados y documentados** consistentes en toda la organización. Capacitación, técnicas más detalladas, métricas avanzadas, **revisiones entre pares** para prevenir errores. Empiezan las verificaciones y validaciones. |
-| 4 | **Cuantitativamente Administrado** | Métricas significativas de calidad y productividad, usadas sistemáticamente para toma de decisiones y gestión de riesgos. Se usan **datos estadísticos históricos** para una calidad **predictiva** (no solo se corrigen errores, se **evita que aparezcan**). |
-| 5 | **Optimizado** | Mejora continua del rendimiento mediante **innovación tecnológica**. Se ataca la **causa raíz** de los problemas. Se establecen objetivos cuantitativos de mejora revisados continuamente. |
-
-> A medida que subimos de nivel pasamos de un proceso **reactivo** (resolver sobre la marcha) a uno **proactivo** (anticipar problemas con planes detallados).
-
-### Área de proceso (Nivel 2)
-
-![Áreas de proceso del nivel Administrado](imgs/p223_img1.png)
-
-Las áreas de proceso del nivel 2 son 7 (la última es opcional):
-
-- Administración de Requerimientos (REQM).
-- Planeamiento de Proyectos (PP).
-- Monitoreo y Control de Proyectos (PMC).
-- Administración de Acuerdo con el Proveedor (SAM) — *opcional*.
-- Medición y Análisis (MA).
-- Aseguramiento de Calidad del Proceso y del Producto (PPQA).
-- Administración de Configuración (CM).
-
-> **SAM es necesaria solo si se contrata a un proveedor externo**, para verificar que cumpla con el nivel de calidad interno.
-
-### Tabla completa de áreas de proceso
-
-![Tabla de áreas de proceso por nivel y categoría](imgs/p223_img2.png)
-
-En total existen **22 áreas de proceso** distribuidas en los 5 niveles. **16 son comunes a todas las constelaciones** CMMI.
-
----
-
-## CMMI-DEV: Representación Continua
-
+### A. Representación Continua (Foco en el Proceso)
 ![Representación continua](imgs/p222_img1.png)
+- **Objetivo:** Acreditar la capacidad de **áreas de proceso individuales** (del 0 al 3/5).
+- Ideal si una empresa solo quiere certificar "Gestión de Requerimientos" pero no le interesa certificar "Gestión de Proveedores".
 
-> El objetivo es **acreditar la capacidad de la organización ante cada una de las áreas de proceso de forma individual**. En lugar de medir la madurez de toda la organización, mide la **capacidad de un proceso en particular**.
+### B. Representación por Etapas (Foco en la Organización)
+![CMMI-DEV por etapas - Niveles 1 a 5](imgs/p219_img1.png)
+- **Objetivo:** Acreditar la **madurez global** de toda la organización.
+- **La regla del castillo de naipes:** Para subir a un nivel, la empresa debe cumplir obligatoriamente TODAS las áreas de ese nivel y de los anteriores. Si fallas en un área de Nivel 2, automáticamente toda la organización pasa a ser Nivel 1.
 
-- **Procesos de nivel 0** son los que no se ejecutan. (Ej: si le preguntás a una empresa si hace gestión de configuración y te dice que no, es **nivel 0** en esa área).
-- Apunta a **mejorar las áreas que uno elige**. Una organización puede obtener la certificación para un área específica en un nivel de capacidad dado.
+#### Los 5 Niveles de Madurez
 
-> Si en una evaluación por etapas todas las áreas que presentás son del mismo nivel, te dan **2 acreditaciones**: la del nivel de madurez y la de la capacidad de los procesos.
+| Nivel | Nombre | Características en la práctica |
+|---|---|---|
+| **1** | **Inicial (Inmaduro)** | Apagan incendios. El éxito se logra gracias al sacrificio de **"héroes"** individuales que trabajan fines de semana. Estado puramente reactivo y de alto riesgo. |
+| **2** | **Gestionado** | *(Foco de la cátedra).* El proyecto se administra. Hay planificación, requerimientos y SQA. La empresa da los recursos para no depender de actos heroicos. |
+| **3** | **Definido** | Procesos estandarizados a nivel organizacional. Todo está documentado. Aparecen las revisiones entre pares (Peer Reviews). |
+| **4** | **Gestionado Cuantitativamente** | Se usan métricas estadísticas para predecir calidad y rendimiento. El entorno pasa de ser reactivo a **predictivo**. |
+| **5** | **Optimizado** | Mejora continua proactiva y ataque a la **causa raíz** sistémica de los defectos. |
+
+### Análisis de las Áreas de Proceso (CMMI-DEV v1.3)
+
+El modelo CMMI se compone de **22 áreas de proceso (PA)**. La profesora en clase explicó cómo estas áreas se distribuyen lógicamente para atacar primero el descontrol de la gestión y luego, en niveles más altos, la madurez de la ingeniería y la predicción estadística.
+
+![Áreas de Proceso por Nivel](imgs/cmmi_areas_proceso.jpg)
+
+**El enfoque en el Nivel 2 (Gestionado):**
+Como se observa en el gráfico, **el Nivel 2 no contiene áreas de "Ingeniería del Producto"**. Esto es porque cuando se creó CMMI, se advirtió que las empresas inmaduras (Nivel 1) pasaban el 80% de su tiempo programando para apagar incendios y no tenían visibilidad ni control.
+Por ende, el objetivo del Nivel 2 es incorporar **capacidad de gestión y soporte** antes de meterse con el código. Las 7 áreas que debes dominar para ser Nivel 2 son:
+1. **REQM:** Administración de Requerimientos. (Gestionarlos y trazarlos, no desarrollarlos).
+2. **PP:** Planeamiento del Proyecto.
+3. **PMC:** Monitoreo y Control del Proyecto.
+4. **MA:** Medición y Análisis.
+5. **PPQA:** Aseguramiento de la Calidad (Proceso y Producto).
+6. **CM:** Administración de la Configuración.
+7. **SAM:** Administración de Acuerdos con Proveedores *(Opcional, solo aplica si la empresa subcontrata partes del desarrollo).*
+
+#### Clasificación por Categorías de Proceso
+Otra forma de entender CMMI es agrupar las áreas según su naturaleza funcional, en lugar de su nivel de madurez:
+
+![Áreas de Proceso por Categoría](imgs/cmmi_categorias_proceso.jpg)
+
+1. **Gestión de Proyectos (Project Management):** Contiene todas las actividades de planificación, monitoreo de riesgos y gestión de proveedores. Comienza en el Nivel 2.
+2. **Soporte (Support):** Son las disciplinas transversales (Calidad, Configuración, Métricas). Es el foco principal de las materias de la cátedra durante el cuatrimestre (Nivel 2).
+3. **Ingeniería (Engineering):** Recién aparece en el **Nivel 3**. Se enfoca puramente en el producto de software: diseño, arquitectura, integración, validación y verificación. 
+4. **Gestión de Procesos (Process Management):** Aparecen fuerte en los Niveles 4 y 5. Son áreas diseñadas para tener capacidad instalada de gente que mide, evalúa estadísticamente y busca la causa raíz de los defectos para optimizar la organización. Es típico en software de misión crítica (ej. industria aeroespacial o defensa).
 
 ---
 
-## CMMI vs. Ágil
+## 8. CMMI vs. Marcos Ágiles (El Choque Cultural)
 
-> **¿Por qué no coinciden a medida que subimos de nivel?**
-
-- CMMI dice que **tenés que definir un proceso y después cumplirlo** (lo verifica con auditorías).
-- Ágil **nunca evalúa que hayas seguido el proceso que definiste**.
-- CMMI a partir de nivel 3-4 plantea **métricas/estadísticas**; ágil plantea que **la experiencia no es extrapolable** a otros proyectos.
-
-### Comparación por nivel
-
-![CMMI cara a cara con Ágil - Niveles 1 y 2](imgs/p224_img1.png)
-
-- **Nivel 1**: ágil lo cubre naturalmente (identificar alcance, realizar el trabajo).
-- **Nivel 2**: la mayoría de las prácticas de CMMI **tienen soporte en ágil** (política, planificación, recursos, responsabilidades, capacitación, configuración, etc.). La diferencia principal es la **adherencia objetiva a procesos y QA de productos** (en rojo), que ágil no exige igual.
+Para que Ágil y CMMI convivan (lo cual es posible, especialmente en Nivel 2), **ambos deben ceder**:
+- **CMMI cede burocracia:** Acepta que un *Product Backlog* reemplace documentos formales de requerimientos o que no haya actas de reuniones diarias (Dailies).
+- **Ágil cede independencia:** Debe aceptar someterse a **auditorías objetivas e independientes** (PPQA), algo que choca con la filosofía de equipos 100% autogestionados.
 
 ![CMMI cara a cara con Ágil - Niveles 3, 4, 5](imgs/p225_img1.png)
-
-- **Nivel 3**: ágil da soporte al "mantener un proceso definido", pero **no mide la performance del proceso** (CMMI sí).
-- **Nivel 4**: ágil **no establece objetivos cuantitativos** ni estabiliza performance de subprocessos.
-- **Nivel 5**: ágil da soporte a la mejora continua, pero la **identificación y corrección de causa raíz** es desigual.
+**El divorcio en los Niveles 4 y 5:** Aquí se separan drásticamente. CMMI exige medir la performance estadística y extrapolar la experiencia entre proyectos. Ágil sostiene que cada iteración y equipo es único, por lo que **la experiencia empírica no es extrapolable** matemáticamente.
 
 ---
 
-## Chivo para el oral
+## 9. Auditorías (El brazo armado de la Calidad)
 
-1. **Distinguí mejora vs. evaluación**: IDEAL/SPICE son de **mejora**; SCAMPI/CMMI son de **evaluación**.
-2. **IDEAL**: las 5 fases (I-D-E-A-L). Hacé énfasis en **Inicialización** (sponsoreo gerencial) y **Diagnóstico** (acá entra SPICE).
-3. **SPICE**: 2 dimensiones (procesos y capacidad), 6 niveles (0 al 5).
-4. **CMMI**: 5 niveles (1 al 5), 3 constelaciones (DEV, ACQ, SVC), 2 representaciones (etapas y continua). Nosotros hacemos foco en **nivel 2**.
-5. **Etapas vs. continua**: por etapas mide la madurez de toda la organización; continua mide la capacidad de procesos individuales.
-6. **CMMI vs. Ágil**: coinciden en niveles bajos, se separan en niveles altos (métricas, causa raíz, objetivos cuantitativos).
-7. **Cerrá con la idea**: CMMI es **procesos definidos**; ágil es **empírico**. Distinta filosofía, distintos mecanismos.
+La auditoría es una revisión **objetiva e independiente**. El auditor debe ser externo al proyecto evaluado (generalmente pertenece al grupo de Aseguramiento de la Calidad, SQA).
 
-> **Si te preguntan "¿en qué nivel estamos?"** → **Nivel 2**, el de la cátedra. Y podés dar los ejemplos: PPQA, REQM, PP, PMC, CM, MA.
+### Tipos de Auditorías
+1. **FCA (Funcional):** Verifica que el producto haga lo que se pidió (que cumpla los requerimientos).
+2. **PCA (Física):** Verifica que la documentación técnica coincida con el código construido.
+3. **Auditoría de Proyecto:** Verifica el **cumplimiento del proceso**. *(Ej: Si el equipo dijo que usaría Scrum, el auditor verifica que realmente estén haciendo las retrospectivas).*
+
+### Proceso y Tipos de Resultados
+Las auditorías se planifican en conjunto (no son visitas sorpresa). El auditor usa un *Checklist* (guía de preguntas mínimas). Al finalizar, genera un reporte con 3 posibles resultados:
+
+1. **Buenas Prácticas:** Actividades superadoras. *(Ej: Armar una herramienta propia para automatizar métricas. Ojo: "Tener un plan" no es buena práctica, es lo mínimo exigido).*
+2. **Desviaciones:** Incumplimientos del proceso. Pueden ser "No adecuado" (todo mal) o "Necesita mejora" (se hace a medias).
+3. **Observaciones:** Prácticas que cumplen el proceso pero son **altamente riesgosas**. 
+   - *Ejemplo de clase:* Si un equipo estima el esfuerzo del proyecto "tirando 3 dados sobre la mesa" y lo tiene documentado así, *no es una desviación* (porque cumplen su propio proceso), pero el auditor deja una observación advirtiendo que es una pésima técnica.
+
+---
+
+## 🎯 Chivo para el oral (Resumen de alto impacto)
+
+1. **La triada conceptual:** IDEAL es el *cómo* mejoro (las 5 fases). CMMI es el *qué* debo alcanzar (modelo de madurez). SCAMPI es *cómo me evalúan* (evidencia objetiva y subjetiva).
+2. **No digas "Certificar":** CMMI y SPICE no certifican (como ISO 9001), sino que **acreditan o evalúan** niveles de capacidad/madurez.
+3. **El Sponsor es vital:** En el modelo IDEAL, la fase clave es la "I" (Inicialización), porque sin apoyo gerencial la mejora de procesos muere frente a las urgencias de los clientes.
+4. **Dominá CMMI Nivel 2:** Es el foco de la materia. Mencioná que es el estado "Gestionado" donde la empresa sale de los "héroes apaga-incendios" (Nivel 1). Recordá áreas clave como PP, REQM y PPQA. 
+5. **La regla del Nivel (Por Etapas):** Aclaralo bien: si fallás en UN área de Nivel 2, se cae todo el castillo y pasás a ser Nivel 1, sin importar si cumplís cosas de Nivel 5.
+6. **El choque con Ágil:** Ágil y CMMI conviven bien en Nivel 2 si ambos ceden (Ágil acepta ser auditado, CMMI acepta menos documentos). Pero en Nivel 4 y 5 chocan porque Ágil rechaza la estandarización estadística extrapolable.
+7. **Las Auditorías:** Recordá que requieren independencia y que arrojan Desviaciones (incumplimiento de las reglas) u Observaciones (cumplen la regla, pero es riesgoso o mejorable).

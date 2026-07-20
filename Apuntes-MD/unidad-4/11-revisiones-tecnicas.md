@@ -58,6 +58,54 @@
 
 ---
 
+## Diferencia clave: Revisiones Técnicas vs. Testing
+
+> Es normal confundirlas porque **ambas buscan errores y defectos**. La diferencia fundamental es **cómo y cuándo** los buscan.
+
+Para entenderlo mejor, se pueden clasificar los enfoques de calidad en dos categorías:
+
+| Enfoque | Tipo | ¿Ejecuta el código? |
+|---|---|---|
+| **Revisiones técnicas** | **Análisis estático** | **No** |
+| **Testing / Pruebas** | **Análisis dinámico** | **Sí** |
+
+### 1. Revisiones Técnicas (Análisis Estático)
+
+> Son evaluaciones que se hacen **antes o sin necesidad de ejecutar el software**.
+
+- **No se ejecuta el código**: es un proceso **estático** de validación y verificación. La palabra "estático" significa que no se ejecuta el código, sino que se analiza por partes o fragmentos de manera visual (leyéndolo).
+- **Abarca cualquier artefacto**: no solo se revisa el código fuente. Se aplican a lo largo de todo el ciclo de vida para revisar **requerimientos, diseños, arquitectura, riesgos, estimaciones**, etc.
+- **Enfoque preventivo y económico**: su objetivo es detectar problemas de manera temprana (por ejemplo, ambigüedades en los requerimientos o mala interacción entre componentes). Encontrar una falla en esta etapa sale **muchísimo más barato** que encontrarla cuando el sistema ya está en producción o en la etapa de pruebas.
+- **Cultura de equipo**: durante estas revisiones (como las peer reviews o inspecciones) **nunca se pone en juicio al autor**, sino únicamente al artefacto.
+
+### 2. Testing / Pruebas de Software (Análisis Dinámico)
+
+> El testing entra en juego cuando **ya tenemos algo construido que se puede poner a funcionar**.
+
+- **Se ejecuta el código**: es un proceso **dinámico**. Se somete al software (o a un componente del mismo) a condiciones específicas, ingresando datos y variables para ver cómo se comporta en la realidad.
+- **Enfoque destructivo**: la visión más apropiada del testing es que es un proceso destructivo en el que se trata de encontrar defectos **asumiendo que ya están ahí**. Se debe tener una **actitud negativa** para demostrar que el comportamiento del programa es incorrecto.
+- **Fases posteriores**: por lo general, se realiza sobre el código ya implementado, probando **unidades, la integración de las partes, o el sistema como un todo** funcionando.
+
+### Resumen: estático vs. dinámico
+
+| Aspecto | Revisiones Técnicas (Estático) | Testing (Dinámico) |
+|---|---|---|
+| **¿Ejecuta el código?** | No. | Sí. |
+| **¿Cuándo se aplica?** | A lo largo de todo el ciclo de vida (incluso en requerimientos). | Cuando ya hay código para ejecutar. |
+| **¿Qué artefactos revisa?** | Cualquier artefacto (requerimientos, diseño, código, planes). | El software funcionando. |
+| **Enfoque** | Preventivo, económico. | Destructivo, actitud negativa. |
+| **Actitud del revisor** | Mejorar el producto, no juzgar al autor. | Asumir que hay defectos y buscarlos. |
+| **Costo de encontrar fallas** | Bajo (1x). | Alto (10x-100x). |
+
+> **Ambas técnicas son complementarias**: las revisiones **limpian el camino temprano** para que el testing sea **mucho más eficiente después**. En etapas tempranas (como requerimientos) no se puede hacer testing, pero sí revisiones.
+
+### Analogía rápida
+
+> **Revisión técnica** = leer la receta antes de cocinar, para ver si tiene sentido.
+> **Testing** = cocinar la receta y probar si quedó bien.
+
+---
+
 ## Revisiones Técnicas (Peer Review)
 
 > Actividad realizada por un **colega** cuyo propósito es mejorar la calidad del software mediante la **detección temprana de errores** en cualquier artefacto (código, requerimientos, diseño, arquitectura, riesgos, estimaciones, planes, etc.).
@@ -187,10 +235,13 @@ Son procesos **time boxing** y exigen **alto esfuerzo intelectual**.
 
 1. **Verificación vs. validación**: verificación = construir correctamente; validación = construir el producto correcto. Es la pregunta clásica.
 2. **Costo de las fallas**: a mayor avance del proyecto, mayor costo de arreglar. Mostrá el gráfico (1 → 10 → 100).
-3. **Definí peer review**: actividad de un colega para detectar errores temprano, sobre cualquier artefacto. **No corrige**, solo detecta. **Estático** = no se ejecuta el código.
-4. **Diferenciá walkthrough vs. inspección**: el primero es informal, sin roles, sin métricas; el segundo es formal, con roles definidos y checklist. Ágil prefiere walkthrough.
-5. **Roles de la inspección**: autor, moderador, anotador, lector, inspector. Cada uno con su función clara.
-6. **Etapas PPIC**: Planificación → Preparación → Inspección → Corrección. La reunión no dura más de 2 horas.
-7. **Cerrá con la cultura**: "no se juzga al autor, se juzga el producto". Es clave para que la gente reporte errores sin miedo.
+3. **Revisiones vs. testing (la pregunta clave)**: ambos buscan errores, pero las revisiones son **análisis estático** (no se ejecuta el código, sirve en cualquier etapa) y el testing es **análisis dinámico** (se ejecuta el código, solo en etapas tardías). Las revisiones son más baratas y preventivas.
+4. **Definí peer review**: actividad de un colega para detectar errores temprano, sobre cualquier artefacto. **No corrige**, solo detecta. **Estático** = no se ejecuta el código.
+5. **Diferenciá walkthrough vs. inspección**: el primero es informal, sin roles, sin métricas; el segundo es formal, con roles definidos y checklist. Ágil prefiere walkthrough.
+6. **Roles de la inspección**: autor, moderador, anotador, lector, inspector. Cada uno con su función clara.
+7. **Etapas PPIC**: Planificación → Preparación → Inspección → Corrección. La reunión no dura más de 2 horas.
+8. **Cerrá con la cultura**: "no se juzga al autor, se juzga el producto". Es clave para que la gente reporte errores sin miedo.
+
+> **Si te preguntan "¿qué diferencia hay entre revisiones técnicas y testing?"** → Las dos buscan errores, pero las **revisiones son estáticas** (no se ejecuta el código, se lee/analiza el artefacto) y sirven en **cualquier etapa** (incluso requerimientos). El **testing es dinámico** (se ejecuta el software) y solo se puede hacer cuando hay código. Las revisiones son más **baratas y preventivas**; el testing es más **tardío y costoso** pero necesario. Son **complementarias**.
 
 > **Si te preguntan "¿qué es estático?"** → no se ejecuta el producto; se analiza el código, diseño o documentación de manera visual o por fragmentos. Por eso sirve en etapas tempranas, antes de tener software funcional.

@@ -24,8 +24,6 @@ El Manifiesto se sustenta en los **procesos empíricos** (basados en la experien
 
 ### Los 4 valores
 
-![Los 12 principios del Manifiesto Ágil](imgs/p037_img1.png)
-
 | # | Valor | Significado |
 |---|---|---|
 | 1 | **Individuos e interacciones** sobre procesos y herramientas. | Es preferible un equipo motivado con comunicación fluida y herramientas pobres, que un equipo desmotivado con las mejores herramientas. El software es humano-intensivo. |
@@ -34,6 +32,8 @@ El Manifiesto se sustenta en los **procesos empíricos** (basados en la experien
 | 4 | **Respuesta ante el cambio** sobre seguir un plan. | En entornos inestables con cambios rápidos, la capacidad de respuesta es más valiosa que el seguimiento de planes preestablecidos. |
 
 ### Los 12 principios
+
+![Los 12 principios del Manifiesto Ágil](imgs/p037_img1.png)
 
 1. **Satisfacer al cliente** con releases tempranos y frecuentes.
 2. **Aceptar** que los requisitos cambien, incluso en etapas finales.

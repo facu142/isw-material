@@ -27,15 +27,26 @@
 
 ## Tipos de Requerimientos
 
-| Tipo | Ejemplo |
-|---|---|
-| **De negocio** | Disminuir un X% de tiempo invertido en procesos manuales relacionados con atención al cliente. |
-| **De usuario** | Realizar consultas en línea del estado de cuenta de los clientes. |
-| **Funcional** | Generar reporte de saldos de cuenta. Recibir notificaciones por email. |
-| **No funcional** | Formato del reporte PDF. Cumplir con niveles de seguridad para credenciales según ley bancaria. |
-| **De implementación** | Servidores en la nube. |
+> La clasificación de los requerimientos es fundamental para entender el **nivel de abstracción** y el **impacto** que tienen en el proyecto.
 
-> El **requerimiento de negocio** otorga valor al negocio. El **requerimiento de usuario** es el *cómo* voy a hacer para llevar a cabo ese valor.
+| Tipo | Definición | Ejemplo |
+|---|---|---|
+| **De negocio** | Expresan los **objetivos de alto nivel**, razones o metas estratégicas por las cuales se desarrolla el sistema. Responden al **¿por qué?**. | Disminuir un X% de tiempo invertido en procesos manuales de atención al cliente. |
+| **De usuario** | Describen las **tareas que el usuario necesita realizar** o los problemas que debe resolver utilizando el sistema. Responden al **¿qué hace el usuario?**. | Realizar consultas en línea del estado de cuenta de los clientes. |
+| **Funcional** | Definen las **funciones específicas, servicios o comportamientos** que el sistema debe proporcionar. Responden al **¿qué hace el sistema?**. | Generar reporte de saldos de cuenta. Recibir notificaciones por email. |
+| **No funcional** | Especifican **restricciones, propiedades o atributos de calidad** del sistema (rendimiento, seguridad, usabilidad). Responden al **¿cómo debe comportarse el sistema?**. | Formato del reporte PDF. Cumplir con niveles de seguridad para credenciales según ley bancaria. |
+| **De implementación** | Son **restricciones técnicas** sobre el entorno, plataforma o herramientas que se deben utilizar para el desarrollo o despliegue. | Servidores en la nube. |
+
+### Análisis de los niveles (la pirámide de valor)
+
+Para comprender la relación entre ellos, podemos verlos como una **jerarquía de valor**:
+
+- **Requerimientos de Negocio**: son la **justificación económica y estratégica**. Sin ellos, el proyecto carece de propósito.
+- **Requerimientos de Usuario**: **traducen las necesidades del negocio en acciones concretas** que el usuario ejecutará. Son el **puente entre la estrategia y la funcionalidad**.
+- **Requerimientos Funcionales**: son la **especificación técnica de las acciones del usuario**. Es el **contrato** de lo que el sistema debe ser capaz de procesar.
+- **Requerimientos No Funcionales**: definen la **"calidad"** del sistema. Un sistema puede tener todas las funciones, pero si es lento o inseguro, falla en sus requerimientos no funcionales.
+
+> **Regla de oro**: el requerimiento de **negocio** otorga el **valor**, el de **usuario** describe la **experiencia** necesaria para obtener ese valor, y los **funcionales** y **no funcionales** definen la **capacidad técnica** del sistema para materializarlo.
 
 ---
 
@@ -142,7 +153,7 @@ La comunicación cara a cara es la **más cálida y efectiva**. A medida que agr
 
 1. **Características de los requerimientos ágiles**: valor, historias/modelos, técnicos y no técnicos juntos, "lo suficiente" (MVP).
 2. **BRUF**: lo que queremos evitar. **7% de features se usan siempre** (Chaos Report).
-3. **Tipos de requerimientos**: negocio, usuario, funcional, no funcional, implementación. Diferencia negocio (valor) vs. usuario (cómo).
+3. **Tipos de requerimientos**: negocio, usuario, funcional, no funcional, implementación. Cada uno responde a una pregunta distinta (¿por qué?, ¿qué hace el usuario?, ¿qué hace el sistema?, ¿cómo se comporta?, ¿con qué se implementa?).
 4. **Dominio del problema vs. solución**: el problema tiene req. de negocio y usuario; la solución tiene req. de software. Las user stories son de **usuario**.
 5. **Just In Time**: detallar los requerimientos **cuando se necesitan**, no al inicio. Evita desperdicio.
 6. **Product Backlog**: contenedor dinámico y priorizado. **El PO prioriza**, no el equipo.
