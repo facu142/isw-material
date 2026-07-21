@@ -9,9 +9,17 @@
 - **Enfoque principal**: **maximizar el valor entregado al cliente** mediante la **eliminación de desperdicios** en los procesos.
 - La idea es **hacer más con menos**: menos tiempo, menos recursos y menos esfuerzo.
 
+<img src="imgs/lean_filosofia.png" alt="Lean - Filosofia" width="450">
+
+> La imagen del muñequito con la cinta métrica representa la esencia de **Lean**: **medir** lo que hacemos para **maximizar el valor** y **minimizar el desperdicio**.
+
 ---
 
 ## 6 principios de la filosofía Lean
+
+<img src="imgs/lean_principios.png" alt="Lean - Los 7 principios visuales" width="450">
+
+> La presentación de la cátedra muestra los **7 principios** con sus íconos característicos: **Eliminar desperdicios**, **Amplificar aprendizaje**, **Tomar decisiones tardías** (diferir compromisos), **Entregar lo antes posible**, **Potenciar el equipo**, **Crear la integridad** y **Visualizar todo el conjunto**.
 
 ### 1. Eliminar desperdicios
 
@@ -77,7 +85,31 @@
 
 ---
 
+## Los 7 gastos en producción (clásicos de Toyota)
+
+<img src="imgs/lean_gastos.png" alt="Lean - Los 7 gastos en produccion" width="450">
+
+> Los **7 gastos en producción** clásicos de la filosofía Lean de manufactura:
+
+| Gasto | Significado |
+|---|---|
+| **Producción en exceso** | Hacer más de lo que se necesita. |
+| **Stock** | Inventario acumulado. |
+| **Pasos extra en el proceso** | Burocracia innecesaria. |
+| **Búsqueda de información** | Tiempo perdido buscando datos. |
+| **Defectos** | Productos con fallos. |
+| **Esperas** | Tiempo ocioso entre actividades. |
+| **Transportes** | Movimiento innecesario de materiales. |
+
+> En la manufactura, todos estos se ven como **físicos**. En software, los **mismos conceptos se traducen** a trabajo intangible (esperas = bloqueos, stock = trabajo parcialmente hecho, etc.).
+
+---
+
 ## Los 8 desperdicios en software (DOWNTIME)
+
+<img src="imgs/lean_7_desperdicios.png" alt="Lean - Los 7 desperdicios en servicios" width="450">
+
+> La imagen muestra la **tabla comparativa** entre los desperdicios de **manufactura** y los de **servicios basados en conocimiento** (como el software). El inventario y la sobreproducción de fábrica se traducen a **trabajo parcialmente terminado** y **características extra** en software.
 
 | # | Desperdicio | Descripción | Ejemplos en software |
 |---|---|---|---|
