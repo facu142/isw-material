@@ -118,16 +118,62 @@ Información concreta que sirve para saber si lo que implementamos es correcto o
 
 ---
 
+## Criterios de Aceptación vs. Pruebas de Aceptación (no son lo mismo)
+
+> Es una confusión muy común: **no son lo mismo**, aunque están relacionados. Uno **define qué** hay que validar; el otro **define cómo** se valida.
+
+| Concepto | Qué es | Quién lo define | Cuándo se hace | Naturaleza |
+|---|---|---|---|---|
+| **Criterio de Aceptación (CA)** | **Condición** que debe cumplir la historia para ser aceptada. | El **PO** lo negocia con el equipo. | **Antes** de desarrollar. | **Declarativo** (qué se valida). |
+| **Prueba de Aceptación (PA)** | **Test que verifica** que un CA se cumple. | El **equipo** la diseña e implementa. | **Durante y después** del desarrollo. | **Ejecutable** (cómo se valida). |
+
+> **Relación**: la PA es la **materialización** del CA. Cada PA se corresponde con uno o más CA. Si el CA falla, la PA falla. **Las PA son la Confirmación de las 3 C**.
+
+### Ejemplo propio (login)
+
+> **User story**: "Como usuario quiero iniciar sesión con email y contraseña para acceder a mi cuenta".
+
+> **Criterios de aceptación** (qué):
+> - CA1: El usuario puede iniciar sesión con email y contraseña correctos.
+> - CA2: El sistema rechaza contraseñas incorrectas con un mensaje de error claro.
+> - CA3: Tras 3 intentos fallidos, la cuenta se bloquea por 15 minutos.
+
+> **Pruebas de aceptación** (cómo):
+> - PA1: Ingresar email válido + contraseña válida → redirige al home. (Verifica CA1)
+> - PA2: Ingresar email válido + contraseña inválida → muestra error "contraseña incorrecta". (Verifica CA2)
+> - PA3: Ingresar 3 veces contraseña inválida → cuenta bloqueada por 15 min. (Verifica CA3)
+
+> **Cómo se ve la diferencia**: el **CA1** dice *qué* debe pasar (login exitoso con credenciales correctas). La **PA1** dice *cómo* verificarlo (ingresar credenciales y ver si redirige). **Múltiples PA pueden verificar un mismo CA** (ej. login con email, con username, con Google, etc. verifican todos el CA1).
+
+### Analogía (medicina)
+
+> El **CA** es *"la presión arterial debe estar por debajo de 120/80"*. La **PA** es el procedimiento real: *"tomar la presión con el tensiómetro 3 veces y verificar que el promedio da menos de 120/80"*. **El CA dice qué; la PA dice cómo**.
+
+### Resumen en una frase
+
+> **Criterio de Aceptación = QUÉ validar. Prueba de Aceptación = CÓMO validar.**
+
+### Errores comunes
+
+- **Confundirlos**: pensar que un CA es lo mismo que una PA, o que las PA "son" los CA. **No**: un CA es una **declaración**; una PA es un **test ejecutable**.
+- **CA como test**: escribir el CA como si fuera un test (*"hacer clic en el botón X y ver Y"*). El CA debe definir la **condición**, no el **procedimiento**.
+- **PA como CA**: definir la PA sin un CA detrás (*"probar 100 veces"*). Toda PA debe estar **trazada a un CA**.
+
+---
+
 ## Chivo para el oral
 
 1. **Concepto**: una historia = una funcionalidad valiosa para un usuario. **Token para una conversación**.
 2. **Forma**: "Como `<rol>`, yo puedo `<actividad>` de forma tal que `<valor de negocio>`".
 3. **Las 3 C**:
-   - **Tarjeta**: lo que se escribe, con criterios de aceptación.
+   - **Tarjeta**: lo que se escribe, con **criterios de aceptación** (qué validar).
    - **Conversación**: la parte más importante. Cara a cara, no se documenta.
-   - **Confirmación**: las pruebas de aceptación.
+   - **Confirmación**: las **pruebas de aceptación** (cómo validar).
 4. **Porciones Verticales**: las user stories cortan la arquitectura en vertical (de UI a BD). Si fueran horizontales, no darían valor.
 5. **Proxies**: cuando no se puede hablar con el usuario real, hay representantes. El PO es un proxy de negocio (no técnico).
-6. **Cerrá con la idea**: las user stories son **multipropósito** (requisito, item de planning, conversación) porque su función principal es **desencadenar la conversación**.
+6. **CA vs PA**: el **criterio de aceptación** define **qué** validar (condición). La **prueba de aceptación** define **cómo** validar (test ejecutable). **Múltiples PA pueden verificar un mismo CA**. Analogía médica: el CA es "presión < 120/80", la PA es el procedimiento del tensiómetro.
+7. **Cerrá con la idea**: las user stories son **multipropósito** (requisito, item de planning, conversación) porque su función principal es **desencadenar la conversación**.
 
 > **Si te preguntan "¿cuál es la parte más importante de una user story?"** → **la conversación**. Lo escrito en la tarjeta es solo el puntapié.
+
+> **Si te preguntan "¿cuál es la diferencia entre criterio de aceptación y prueba de aceptación?"** → El **criterio de aceptación** es la **condición** que debe cumplirse (qué validar). Lo define el **PO** antes de desarrollar. La **prueba de aceptación** es el **test ejecutable** que verifica que el criterio se cumple (cómo validar). La diseña el **equipo** durante el desarrollo. **Múltiples PA pueden verificar un mismo CA**. Las PA son la **Confirmación** de las 3 C. Analogía médica: el CA es "presión < 120/80", la PA es el procedimiento del tensiómetro.

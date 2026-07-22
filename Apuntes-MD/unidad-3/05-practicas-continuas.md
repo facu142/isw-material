@@ -1,6 +1,6 @@
 # 05 — Prácticas Continuas (CI / CD)
 
-> Págs. 164-166 del apunte. Cubre la Integración Continua, la Entrega Continua, el Despliegue Continuo y las estrategias de despliegue (Blue-Green, Canary).
+> Págs. 164-166 del apunte + transcripción de clase grabada. Cubre la Integración Continua, la Entrega Continua, el Despliegue Continuo y las estrategias de despliegue (Blue-Green, Canary).
 
 ## Introducción
 
@@ -17,13 +17,23 @@
 - Cada integración es verificada por **pruebas automatizadas**.
 - Permite al equipo **detectar problemas de manera temprana** (al integrar frecuentemente, es más fácil detectar y corregir errores).
 
+> **Lo que busca CI** (según la clase): **integrar continuamente** los diferentes componentes de un producto que pueden estar siendo trabajados por **diferentes miembros del equipo** o hasta por **diferentes equipos** que participan del mismo producto.
+
+### El servidor de integración continua
+
+> CI **requiere de un servidor de integración continua**, que es el lugar donde cada una de las **ramas de desarrollo** del repositorio y cada uno de los componentes finalmente hacen la operación de **merge** y se **automatizan las pruebas unitarias** para garantizar que, una vez integrado, **no se rompe nada** a nivel unitario.
+
 ### Flujo
 
 1. Cada desarrollador realiza **pruebas unitarias** en su entorno local (idealmente automatizadas, idealmente con TDD).
-2. Cuando sabe que su código funciona, lo sube al **repositorio de integración**.
-3. La versión del producto queda en condiciones de ir a las **pruebas de aceptación de usuario** sin problemas.
+2. Cuando sabe que su código funciona, lo sube al **repositorio de integración** (merge de su rama).
+3. El **servidor de CI** corre las **pruebas unitarias automatizadas** sobre el producto integrado.
+4. Si todo pasa, se genera el **empaquetado (release) de forma automatizada**.
+5. Sobre ese release se ejecutan las **pruebas de aceptación de forma manual**.
 
 > **TDD** + **CI** = combinación natural: escribís el test, lo hacés pasar, subís el código, los tests de CI verifican la integración.
+
+> **Punto clave de la clase**: en CI el pipeline **termina en el empaquetado**. El objetivo es producir un release sano; el despliegue a producción **no forma parte** de CI.
 
 ---
 
@@ -38,6 +48,14 @@
 
 > **Diferencia clave con CI**: en CI solo se verifica que el código se integra. En entrega continua, además se garantiza que la versión está **lista para producción** (aunque no se despliegue).
 
+### Detalle de la clase: dónde termina el pipeline
+
+> En entrega continua, el pipeline **no produce el despliegue a producción**: su objetivo es **terminar en el empaquetado**. Sobre ese empaquetado se ejecutan las **pruebas de aceptación de forma manual** y, finalmente, con un **proceso independiente** se pone ese release en producción.
+
+- El pipeline puede tener un **"botoncito"** (un disparador manual) que permite **desatar el despliegue**, pero ese paso es **manual y sujeto a que las pruebas de aceptación se hayan ejecutado manualmente**.
+- **Ojo con el matiz**: en entrega continua el **proceso de deploy puede estar automatizado** (apretar un botón), pero **se dispara de forma manual**. No es lo mismo que el despliegue continuo, donde el deploy está **dentro del pipeline** y se dispara solo.
+- En la práctica, el deploy manual puede ser desde apretar un botón hasta **llevar el paquete a un servidor de aplicaciones / contenedor** (Tomcat, réplicas, etc.) y actualizarlo a mano.
+
 ---
 
 ## 3. Despliegue Continuo (Continuous Deployment)
@@ -47,10 +65,18 @@
 - Se utilizan **pipelines** que contienen una serie de **pasos en un orden determinado** para que la instalación sea satisfactoria.
 - Si los tests pasan, el código va a producción automáticamente.
 
+### La condición para llegar al despliegue continuo (de la clase)
+
+> Solo los **equipos maduros** llegan al despliegue continuo: son los que lograron **automatizar las pruebas de aceptación** (además de las unitarias y las de integración).
+
+- Cuando una feature está terminada → se desata la integración continua → culmina en **pruebas de aceptación automatizadas** → si todo sale bien y no se rompe nada → **automáticamente se desata el despliegue a producción**.
+- Es **lo más rápido posible** para llevar una feature al cliente y ponerla a prueba en un entorno productivo.
+
 ### Pipeline
 
 ```
-[Construcción] → [Tests unitarios] → [Despliegue] → [Tests de aceptación] → [Producción]
+[Construcción] → [Tests unitarios] → [Empaquetado] → [Tests de aceptación] → [Producción]
+     auto              auto               auto         auto (solo en CD)      auto
 ```
 
 ---
@@ -72,6 +98,35 @@
 > **CI** = "cada commit se integra".
 > **Entrega Continua** = "la versión siempre está lista".
 > **Despliegue Continuo** = "la versión va sola a producción".
+
+---
+
+## El componente más importante: automatizar las pruebas
+
+> **Pregunta de la clase**: ¿cuál es el componente más importante para poder realizar cualquiera de estas prácticas continuas? → **La automatización de las pruebas** (no solo las de aceptación: las pruebas **en general**).
+
+Las pruebas automatizadas le dan al producto el **aseguramiento de calidad** necesario en dos niveles:
+
+- **Unitario**: que cada uno de los componentes que se integran produce un **release sano**, que cumple con las especificaciones internas del producto.
+- **Aceptación**: que ese producto **corresponde y satisface los requerimientos de los clientes**.
+
+### Las 2 trampas (muy preguntables en el oral)
+
+1. **Automatizar no alcanza si el producto es malo**: *"yo tranquilamente puedo crear un script que haga el deploy a producción y puedo hacer deploy a producción de **basura que no funciona**"*. Automatizar el deploy sin pruebas no sirve de nada.
+
+2. **Automatizar no alcanza si las pruebas son malas**: *"tranquilamente podríamos automatizar pruebas y que el conjunto de nuestros tests sea **cero**... un pipeline que corre derecho, y si tengo cero pruebas, no me sirve de nada"*. No es solo la automatización: necesitás un **buen conjunto de pruebas** que te asegure que si el pipeline corre, produce un producto sano que va a funcionar correctamente en producción.
+
+> **Resumen**: la palabra clave es **automatizar las pruebas**, pero con dos condiciones: que las pruebas **existan** y que estén **bien hechas**.
+
+---
+
+## El rol DevOps
+
+> A nivel conceptual las prácticas continuas **no son nuevas**, pero **no todas las empresas las implementan**.
+
+- El rol que hace la **automatización de los procesos de deploy** es de los **más difíciles de encontrar** en la industria.
+- Está más ligado a la parte de **infraestructura**: construir los **pipelines** para la integración continua, armar las integraciones para el deploy.
+- Son perfiles **poco distribuidos** pero que **ayudan muchísimo** a la calidad y a poder **entregar rápidamente un producto en el que tenés confianza**.
 
 ---
 
@@ -128,12 +183,31 @@ Las prácticas continuas son la **materialización** del agilismo en la ingenier
 ## Chivo para el oral
 
 1. **3 prácticas continuas**: CI, Entrega Continua, Despliegue Continuo. Son una **evolución de SCM** hacia la automatización completa.
-2. **CI (Integración Continua)**: integrar al repositorio compartido **varias veces al día**. Cada commit verificado por tests automatizados. **No incluye producción**.
-3. **Entrega Continua**: la versión **siempre está lista** para producción, pero el paso a producción es **decisión humana** (PO).
-4. **Despliegue Continuo**: la versión va a producción **automáticamente** (pipelines).
-5. **Estrategias**:
+2. **CI (Integración Continua)**: integrar al repositorio compartido **varias veces al día**. Requiere un **servidor de CI** donde se mergean las ramas y corren los tests unitarios automatizados. **El pipeline termina en el empaquetado**; no incluye producción.
+3. **Entrega Continua**: la versión **siempre está lista** para producción, pero el paso a producción es **decisión humana** (PO). El deploy puede estar automatizado pero **se dispara manualmente** (botón). Las pruebas de aceptación son **manuales**.
+4. **Despliegue Continuo**: la versión va a producción **automáticamente**. Solo para **equipos maduros** que lograron **automatizar las pruebas de aceptación**.
+5. **Componente más importante**: **automatizar las pruebas** (en general). Trampas: podés automatizar el deploy de **basura que no funciona**, o tener un pipeline con **cero tests** que corre derecho. Necesitás un **buen conjunto de pruebas**.
+6. **Rol DevOps**: automatiza los procesos de deploy, construye pipelines. Difícil de encontrar, ligado a infraestructura, muy valioso.
+7. **Estrategias**:
    - **Blue-Green**: dos entornos idénticos, redireccionás el tráfico. **Rollback instantáneo**.
    - **Canary**: despliegue gradual a un % de usuarios. **Feedback incremental**.
-6. **Cerrá con la idea**: las prácticas continuas son el **eslabón final** entre el agilismo y la operación real. Permiten entregar valor al usuario de forma **frecuente, segura y automatizada**.
+8. **Cerrá con la idea**: las prácticas continuas son el **eslabón final** entre el agilismo y la operación real. Permiten entregar valor al usuario de forma **frecuente, segura y automatizada**.
 
-> **Si te preguntan "¿cuál es la diferencia entre CI y Entrega Continua?"** → en **CI** solo se valida que el código se integra con el resto (tests automatizados al integrar). En **Entrega Continua**, además, se garantiza que la versión está **lista para ir a producción** en cualquier momento, aunque todavía se requiere decisión humana para desplegar.
+---
+
+## Respuestas modelo para preguntas frecuentes
+
+### ¿Cuál es la diferencia entre CI y Entrega Continua?
+> En **CI** solo se valida que el código se integra con el resto: el servidor de CI mergea las ramas, corre los tests unitarios automatizados y genera el empaquetado. El pipeline **termina ahí**. En **Entrega Continua**, además, se garantiza que la versión está **lista para ir a producción** en cualquier momento, aunque el despliegue sigue siendo una **decisión humana** (las pruebas de aceptación se hacen manualmente y alguien dispara el deploy).
+
+### ¿Cuál es la diferencia entre Entrega Continua y Despliegue Continuo?
+> En **Entrega Continua** el despliegue a producción es **manual**: puede ser apretar un botón, pero un humano decide cuándo, después de correr las pruebas de aceptación manualmente. En **Despliegue Continuo** el despliegue es **automático**: solo lo logran **equipos maduros** que automatizaron las pruebas de aceptación; si todo el pipeline pasa, la feature va sola a producción sin intervención humana.
+
+### ¿Cuál es el componente más importante de las prácticas continuas?
+> **La automatización de las pruebas** (en general, no solo las de aceptación). Pero con dos trampas: podés automatizar el deploy de **basura que no funciona**, y podés tener un pipeline con **cero tests** que corre perfecto pero no asegura nada. La clave es tener un **buen conjunto de pruebas** automatizadas que garanticen que si el pipeline pasa, el producto en producción funciona correctamente y satisface los requerimientos del cliente.
+
+### ¿Qué es un pipeline?
+> Es un **conjunto ordenado de pasos** que se ejecutan automáticamente: construcción → pruebas unitarias → empaquetado → pruebas de aceptación → (eventualmente) despliegue. En CI termina en el empaquetado; en entrega continua el deploy se dispara manual; en despliegue continuo el deploy está dentro del pipeline.
+
+### ¿Qué hace el rol DevOps?
+> Automatiza los **procesos de deploy**: construye los **pipelines** de integración continua y arma las integraciones para el despliegue. Está ligado a **infraestructura**, es un perfil **difícil de encontrar** en la industria, y aporta muchísimo a la calidad y a la velocidad de entrega.

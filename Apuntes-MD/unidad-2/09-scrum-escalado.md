@@ -8,7 +8,7 @@
 
 > Se escala cuando tenés **más de un equipo de Scrum trabajando sobre el mismo producto**.
 
-![Matriz de Scaled Scrum](imgs/p113_img1.png)
+<img src="imgs/p113_img1.png" alt="Matriz de Scaled Scrum" width="450">
 
 | Equipos | 1 producto | Múltiples productos |
 |---|---|---|
@@ -160,7 +160,7 @@
 
 ## 6. Resumen visual
 
-![Matriz de Scaled Scrum: qué framework usar según equipos y productos](imgs/p113_img1.png)
+<img src="imgs/p113_img1.png" alt="Matriz de Scaled Scrum" width="450">
 
 > La matriz resume cuándo aplicar cada cosa:
 > - **Scrum clásico**: 1 equipo, 1 producto.

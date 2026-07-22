@@ -8,6 +8,8 @@ La Ingeniería de Software se compone de **tres grandes grupos de disciplinas** 
 
 ---
 
+![3 Disciplinas de la IS](imgs/disciplinas-is.png)
+
 ### 1. Disciplinas Técnicas (orientadas al producto)
 
 > Actividades que **aportan al desarrollo del software como producto**. Producen los artefactos centrales: requerimientos, código, pruebas, documentación, despliegue.

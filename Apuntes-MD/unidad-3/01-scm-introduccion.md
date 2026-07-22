@@ -8,6 +8,8 @@
 
 > Recordá: la IS tiene 3 disciplinas (técnicas, de gestión, de soporte). **SCM es la de soporte**.
 
+![3 Disciplinas de la IS](imgs/disciplinas-is-scm.png)
+
 ### ¿Qué nos permite?
 
 - **Identificar** características técnicas y funcionales de ítems de configuración.

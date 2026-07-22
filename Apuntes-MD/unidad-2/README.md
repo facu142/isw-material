@@ -18,6 +18,7 @@
 | 10 | [Lean](10-lean.md) | Origen Toyota, 6 principios, 8 desperdicios (DOWNTIME) |
 | 11 | [Kanban](11-kanban.md) | Concepto, WIP, políticas, clases de servicio, tablero |
 | 12 | [Métricas Ágiles y de Proceso](12-metricas-agiles.md) | Velocity, burndown/burnup, RTF, Lead Time, Cycle Time, Touch Time |
+| 13 | [Test Driven Development (TDD)](13-tdd.md) | Ciclo Red-Green-Refactor, 3 leyes de Uncle Bob, Refactoring, ATDD/BDD/TDD |
 
 ## Bloques temáticos
 

@@ -1,6 +1,6 @@
 # 06 — Tipos de Pruebas y TDD
 
-> Págs. 186-188 del apunte. Cubre smoke test, testing funcional, testing no funcional, y TDD con el ciclo Red-Green-Refactor.
+> Págs. 186-188 del apunte + transcripción de clase de testing. Cubre smoke test, sanity test, testing funcional, testing no funcional, y TDD con el ciclo Red-Green-Refactor.
 
 ## Smoke Test
 
@@ -15,7 +15,19 @@ Lo que se suele probar:
 - ¿Se conecta a la base de datos?
 - ¿No hay errores fatales?
 
-> Es un **filtro rápido** antes de invertir tiempo en tests más profundos.
+> Es un **filtro rápido** antes de invertir tiempo en tests más profundos. Se hace muchas veces con la **primera versión** del producto: una corrida rápida por todo el software, **sin escenarios alternativos ni casos rebuscados**, solo para ver que no haya nada catastrófico.
+
+## Sanity Test
+
+> **No es lo mismo que el smoke test** (la profe lo aclaró explícitamente en clase).
+
+| | **Smoke Test** | **Sanity Test** |
+|---|---|---|
+| **Qué verifica** | Que no haya **fallas catastróficas** (el software "prende"). | Que se corran todos los tests y las **funcionalidades básicas no tengan fallas críticas**. |
+| **Profundidad** | Más superficial. | Un poco más profundo: confirma que lo básico sigue sano. |
+| **Cuándo** | Primera versión / build nuevo. | Después de cambios, para confirmar que lo esencial no se rompió. |
+
+> **Mnemotecnia**: *smoke* = "¿prende sin explotar?"; *sanity* = "¿lo básico sigue cuerdo?".
 
 ---
 
@@ -28,12 +40,16 @@ Lo que se suele probar:
 
 > **Ejemplo**: en una aplicación bancaria, las pruebas funcionales verificarán si los usuarios pueden realizar correctamente transacciones (transferencias, pagos, consultas de saldo, etc.).
 
+> **De la clase**: es el tipo de prueba **más fácil** porque, si los requerimientos están bien planteados, el caso de prueba **deriva casi automáticamente** de ellos.
+
 ---
 
 ## Testing No Funcional
 
 - Es la prueba de **cómo funciona** el sistema, no de **qué hace**.
 - Los requerimientos no funcionales son **tan importantes** como los funcionales.
+
+> **De la clase**: acá es donde toma especial importancia que el **ambiente de prueba sea lo más parecido posible a producción** (para probar stress, portabilidad, fiabilidad). Y ojo: los requerimientos no funcionales **van mucho más allá del código** — tienen que ver con el **ambiente, las condiciones de ejecución y hasta el equipamiento**.
 - Tipos de pruebas no funcionales:
 
 | Tipo | Qué analiza |
@@ -87,9 +103,12 @@ El feedback es **inmediato**: sabés en todo momento si lo que acabás de codear
 ## Chivo para el oral
 
 1. **Smoke**: primera corrida, superficial, filtra fallas catastróficas. Listá las preguntas típicas (arranca, login, pantalla principal, BD, etc).
-2. **Funcional**: "qué hace". Deriva de requerimientos funcionales, basado en procesos de negocio.
-3. **No funcional**: "cómo funciona". Performance, carga, stress, usabilidad, portabilidad.
-4. **TDD**: ciclo Red-Green-Refactor, en ese orden. Test primero, código mínimo, refactor sin romper nada.
-5. **Cerrá con la conexión**: TDD encaja con el principio ágil de **testing temprano** y **reducir latencia del feedback**.
+2. **Sanity ≠ Smoke**: smoke es "¿prende sin explotar?"; sanity es "¿las funcionalidades básicas siguen sanas tras correr todos los tests?". (La profe lo aclaró: NO son lo mismo.)
+3. **Funcional**: "qué hace". Deriva de requerimientos funcionales, basado en procesos de negocio. El más fácil: deriva casi automáticamente de los requerimientos.
+4. **No funcional**: "cómo funciona". Performance, carga, stress, usabilidad, portabilidad. Necesita ambiente lo más parecido a producción; los RNF van más allá del código (ambiente, equipamiento).
+5. **TDD**: ciclo Red-Green-Refactor, en ese orden. Test primero, código mínimo, refactor sin romper nada.
+6. **Cerrá con la conexión**: TDD encaja con el principio ágil de **testing temprano** y **reducir latencia del feedback**.
 
 > **Si te preguntan la diferencia entre funcional y no funcional** → funcional verifica **qué** hace (transferencia, pago, etc); no funcional verifica **cómo** lo hace (qué tan rápido, cuántos usuarios soporta, etc).
+
+> **Si te preguntan la diferencia entre smoke y sanity** → smoke es una corrida superficial que verifica que no haya **fallas catastróficas** (típicamente en la primera versión). Sanity verifica que, corriendo todos los tests, las **funcionalidades básicas no tengan fallas críticas**. La profe remarcó que **no son lo mismo**.

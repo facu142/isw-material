@@ -1,8 +1,10 @@
 # 04 — Proceso de Pruebas
 
-> Págs. 179-181 del apunte. Cubre las 4 etapas: planificación, diseño, ejecución, evaluación y reporte.
+> Págs. 179-181 del apunte + transcripción de clase de testing. Cubre las 4 etapas: planificación, diseño, ejecución, evaluación y reporte.
 
 > Al hablar de "proceso de pruebas" nos situamos en el contexto de un **proceso definido**.
+
+> **Matiz de la clase (tradicional vs. ágil)**: el **plan de pruebas** formal es propio de un **proyecto tradicional** — en un proyecto gestionado con **Scrum no hay plan de pruebas** como documento. Pero la **identificación y especificación de casos de prueba se hacen igual** en ambos contextos, y la ejecución también.
 
 ![Proceso de pruebas](imgs/p180_img1.png)
 
@@ -38,6 +40,8 @@ Acá se realiza el **Plan de Pruebas**, que contiene:
 - Se **registra el resultado** de la ejecución y la **identidad y versión** del software en las herramientas de testing.
 - Se **comparan los resultados reales con los esperados**.
 
+> **De la clase**: la ejecución puede ser **manual, automatizada o una combinación de ambas**.
+
 ---
 
 ## 4. Evaluación y Reporte
@@ -45,6 +49,8 @@ Acá se realiza el **Plan de Pruebas**, que contiene:
 - Se identifican y corrigen los defectos encontrados hasta cerrar **todos** los casos de prueba.
 - Para el análisis se recurre a los **criterios de aceptación**.
 - Se confecciona un **informe de reportes**.
+
+> **El loop (de la clase)**: ejecución → **análisis de fallas** → corrección → nueva ejecución. El círculo se repite **las veces que sea necesario** hasta cumplir el **criterio de aceptación**, que es lo que determina el **fin** del testing.
 
 ---
 

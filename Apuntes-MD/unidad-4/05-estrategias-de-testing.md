@@ -1,6 +1,8 @@
 # 05 — Estrategias de Testing (Caja Negra y Caja Blanca)
 
-> Págs. 181-186 del apunte. Cubre las técnicas basadas en especificaciones (partición de equivalencias, valores límite) y basadas en experiencia, más las coberturas de caja blanca y la complejidad ciclomática.
+> Págs. 181-186 del apunte + transcripción de clase de testing. Cubre las técnicas basadas en especificaciones (partición de equivalencias, valores límite) y basadas en experiencia, más las coberturas de caja blanca y la complejidad ciclomática.
+
+> **Consejo de la clase** (igual que con las estimaciones): **no uses una sola técnica, combínalas**. Las distintas técnicas atacan distintos problemas; la combinación es la que maximiza la cobertura con el menor esfuerzo (el objetivo siempre es: **mayor cobertura posible con el menor esfuerzo**, porque presupuesto y tiempo son limitados).
 
 ## Caja Negra
 
@@ -124,9 +126,10 @@ if x > 0 and y < 5:
 
 ## Chivo para el oral
 
-1. **Caja Negra**: "No veo el código, solo entradas y salidas". Métodos basados en especificaciones (equivalencias + valores límite) y basados en experiencia (adivinanza + exploratoria).
-2. **Caja Blanca**: "Veo el código, me interesa la estructura". Construyo el grafo de flujo, calculo **M** (complejidad ciclomática) y defino los **caminos independientes**.
-3. **Las 3 coberturas en orden**: sentencias (cada línea) → decisión (cada rama V y F) → condición (cada operando V y F). Cada una es **más estricta** que la anterior.
-4. **Cerrá con la idea**: la cobertura de condición es la más completa, pero también la más costosa. En la práctica se usan combinaciones.
+1. **Abrí con el objetivo**: máxima cobertura con el menor esfuerzo (tiempo y presupuesto limitados). Por eso **las técnicas se combinan** — cada una ataca problemas distintos.
+2. **Caja Negra**: "No veo el código, solo entradas y salidas". Métodos basados en especificaciones (equivalencias + valores límite) y basados en experiencia (adivinanza + exploratoria).
+3. **Caja Blanca**: "Veo el código, me interesa la estructura". Construyo el grafo de flujo, calculo **M** (complejidad ciclomática) y defino los **caminos independientes**.
+4. **Las 3 coberturas en orden**: sentencias (cada línea) → decisión (cada rama V y F) → condición (cada operando V y F). Cada una es **más estricta** que la anterior.
+5. **Cerrá con la idea**: la cobertura de condición es la más completa, pero también la más costosa. En la práctica se usan combinaciones.
 
 > **Si te piden la fórmula de M** → `M = E - N + 2P` (o cantidad de regiones cerradas + 1). Asegurate de tener un ejemplo a mano (el del apunte con M=4 y M=3+1 sirve).

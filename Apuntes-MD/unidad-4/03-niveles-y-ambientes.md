@@ -1,8 +1,21 @@
 # 03 — Niveles y Ambientes de Prueba
 
-> Págs. 174-179 del apunte. Cubre los 4 niveles de prueba, el modelo en V, y los 4 ambientes.
+> Págs. 174-179 del apunte + transcripción de clase de testing. Cubre los 4 niveles de prueba, el modelo en V, y los 4 ambientes.
 
 ## Niveles de Prueba
+
+> A medida que **subís de nivel** vas **abarcando más cosas** (como subir escalones): unitario → integración → sistema → aceptación.
+
+### ¿Quién ejecuta cada nivel? (de la clase)
+
+| Nivel | Quién lo ejecuta normalmente |
+|---|---|
+| **Unitario** | Los **desarrolladores** (el mismo que construye el componente). |
+| **Integración** | El rol de **tester**. |
+| **Sistema** | El rol de **tester**. |
+| **Aceptación** | El **usuario final / cliente**. |
+
+> Las **unitarias** y las de **aceptación** son las dos excepciones a la regla "el tester prueba": las primeras las hace el desarrollador, las últimas el cliente.
 
 ### 1. Testing Unitario
 
@@ -25,6 +38,8 @@ test('Suma 2 + 3 debe ser 5', () => {
 
 > Notación `test`, `expect`, `toBe` propia del framework **Jest**.
 
+> **Matiz de la clase**: en las pruebas unitarias *"casi podríamos decir que lo que encontramos son **errores** más que defectos"*, porque el desarrollador construye y prueba casi en el mismo momento. (En rigor teórico es un defecto, pero al estar todo dentro del mismo proceso, el límite error/defecto se difumina.) Además, las unitarias son las **más fáciles de automatizar** (son puntuales y aisladas).
+
 ### 2. Testing de Integración
 
 - Verifica que las partes que funcionan bien **aisladamente** también lo hagan **en conjunto**.
@@ -40,6 +55,8 @@ test('Suma 2 + 3 debe ser 5', () => {
 **Puntos clave del test de integración**:
 - Conectar de a poco las partes más complejas.
 - Minimizar la necesidad de programas auxiliares (*stubs* y *drivers*).
+
+> **De la clase**: la integración se hace de manera **incremental** — no juntás todos los componentes de una vez porque después es imposible identificar dónde están los defectos. Los **módulos críticos para el negocio** se integran y prueban **lo antes posible**. Y una prueba de integración **también puede probar una funcionalidad concreta** (no es solo una vista técnica de la conexión entre componentes).
 
 ### 3. Testing de Sistema
 
@@ -89,14 +106,22 @@ Los ambientes son los **lugares donde se trabaja** en la construcción de softwa
 
 > **Preproducción puede no ser 100% igual a producción** por costo (hardware), seguridad o arquitectura. Esto es importante porque algunos defectos solo se ven en producción.
 
+> **Por qué no son iguales (de la clase)**: el entorno de producción tiene características que lo hacen funcionar adecuadamente en la organización — requisitos de **performance, concurrencia, seguridad y redundancia** — y **es caro** tener muchos ambientes iguales. Por eso solo usamos ambientes "lo más parecidos posible" para las pruebas que realmente lo necesitan (sistema y aceptación).
+
+> **Detalle fino de la clase**: el ambiente de **producción** puede usarse para pruebas de aceptación (beta) **si el software todavía no está en operación** (ej. un producto nuevo). Una vez liberada la primera versión al mercado, producción queda reservado para la operación.
+
 ---
 
 ## Chivo para el oral
 
 1. **Arrancá por los 4 niveles en orden**: unitario → integración → sistema → aceptación. Para cada uno, quién, sobre qué, qué se busca.
-2. **Diferenciá alfa vs. beta** con un ejemplo (el del ERP / la app móvil del apunte).
-3. **Mencioná el Modelo en V** y la diferencia entre **verificación** (construir bien) y **validación** (construir lo correcto).
-4. **Recorré los 4 ambientes** de menor a mayor: desarrollo → testing → preproducción → producción, y qué pruebas se hacen en cada uno.
-5. **Cerrá con la idea clave**: "los desarrolladores no deben tener acceso al ambiente de pruebas" — apunta a la independencia.
+2. **Quién ejecuta cada nivel**: unitarias → desarrolladores; integración y sistema → testers; aceptación → usuario/cliente. (Las puntas son la excepción a la regla del tester.)
+3. **Diferenciá alfa vs. beta** con un ejemplo (el del ERP / la app móvil del apunte).
+4. **Mencioná el Modelo en V** y la diferencia entre **verificación** (construir bien) y **validación** (construir lo correcto).
+5. **Recorré los 4 ambientes** de menor a mayor: desarrollo → testing → preproducción → producción, y qué pruebas se hacen en cada uno.
+6. **Por qué preproducción ≠ producción**: performance, concurrencia, seguridad y redundancia son caras de replicar.
+7. **Cerrá con la idea clave**: "los desarrolladores no deben tener acceso al ambiente de pruebas" — apunta a la independencia.
 
 > **Pregunta típica**: "¿en qué ambiente se hace la prueba de sistema?" → **preproducción**. "¿Y la de aceptación?" → también preproducción (o aceptación alfa). La beta ya es en producción.
+
+> **Pregunta trampa de la clase**: "¿quién ejecuta las pruebas de aceptación?" → el **usuario final/cliente**, no el tester. Y su objetivo **no es encontrar defectos** sino **establecer confianza** en el sistema.
